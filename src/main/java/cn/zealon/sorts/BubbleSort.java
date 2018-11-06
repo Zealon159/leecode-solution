@@ -9,8 +9,8 @@ public class BubbleSort {
 
     public static void main(String[] args){
         int[] nums = {1,2,78,6,48,10,8,66};
-        bubbleSort(nums);
-
+        //bubbleSort(nums);
+        sort(nums);
         // 输出结果
         for(int i=0;i<nums.length;i++){
             System.out.print(nums[i]+"\t");
@@ -38,5 +38,62 @@ public class BubbleSort {
             if (!flag) break; // 没有数据交换，提前退出
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void sort(int[] nums){
+        for(int i=0;i<nums.length;i++){
+            boolean flag = false;
+            for(int j=0;j<nums.length-i-1;j++){
+                if(nums[j]>nums[j+1]){
+                    int tmp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = tmp;
+                    flag = true;
+                }
+            }
+            if(!flag){
+                break;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
