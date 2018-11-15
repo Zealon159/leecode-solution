@@ -1,6 +1,8 @@
 package cn.zealon.array;
 
 
+import java.util.Arrays;
+
 /**
  * 两数之和
  *
@@ -20,6 +22,11 @@ public class TwoSum {
 
     public static void main(String[] args){
         int[] nums = {1,0,5,3,1,2,45,10};
+
+        Arrays.sort(nums,0,nums.length);
+        System.out.println(Arrays.toString(nums));
+
+
         int[] resultNums = twoSum(nums,11);
         if(resultNums!=null){
             System.out.println(resultNums[0]+","+resultNums[1]);
@@ -38,5 +45,13 @@ public class TwoSum {
             }
         }
         throw new IllegalArgumentException("No two sum solution");
+    }
+
+    public static int[] twoSum2(int[] nums,int target){
+
+        for(int i=0,j=nums.length-1;i<nums.length;i++){
+
+        }
+        return nums;
     }
 }

@@ -61,27 +61,23 @@ public class SelectSort {
 
 
 
-
-
-
-
-
-
-
-
     public static void sort1(int[] nums){
-
         for (int i = 0; i < nums.length; i++) {
-            int minIndex = i;
+            int min = i;
             for (int j = i; j < nums.length; j++) {
-                if(nums[minIndex] > nums[j]){
-                    minIndex = j;
+                if (nums[i]>nums[j]){
+                    min = j;
                 }
             }
             int temp = nums[i];
-            nums[i] = nums[minIndex];
-            nums[minIndex] = temp;
+            nums[i] = nums[min];
+            nums[min] = temp;
         }
-
     }
+
+
+
+
+
+
 }

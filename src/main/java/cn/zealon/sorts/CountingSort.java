@@ -10,8 +10,8 @@ import java.util.Arrays;
 public class CountingSort {
 
     public static void main(String[] args){
-        int[] nums = {6,2,8,10,7,10,6};
-        sort(nums);
+        int[] nums = {3,4,7,3,5};
+        sort2(nums);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -68,41 +68,33 @@ public class CountingSort {
 
 
 
-
-    public static void sort2(int[] nums){
-
-        // 计算最大最小值
-        int min=nums[0],max =nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if(min>nums[i]){
-                min=nums[i];
-            }
-            if(max<nums[i]){
-                max=nums[i];
-            }
+    public static void sort2(int[] arr){
+        // 获取最大最小值
+        int max=arr[0],min=arr[0];
+        for (int i = 0; i < arr.length; i++) {
+            if (max<arr[i]) max=arr[i];
+            if (min>arr[i]) min=arr[i];
         }
 
-        // 定义并填充计数数组
+        // 定义计数数组，并填充计数值
         int[] bucket = new int[max-min+1];
-        for (int i = 0; i < nums.length; i++) {
-            bucket[nums[i]-min]++;
+        for (int i = 0; i < arr.length; i++) {
+            bucket[arr[i]-min]++;
         }
 
-        // 将计数数组回填到有序数组
-        int index=0,i=0;
-        while (index<nums.length){
-            if(bucket[index]!=0){
-                nums[index]=i+min;
+        // 将桶填充为有序数组
+        int i=0; //桶下标
+        int index = 0; //排序数组下标
+        while (i < bucket.length){
+            if(bucket[i]!=0){
+                arr[index]=i+min;
                 bucket[i]--;
                 index++;
-            }else {
+            }else{
                 i++;
             }
         }
-
     }
-
-
 
 
 

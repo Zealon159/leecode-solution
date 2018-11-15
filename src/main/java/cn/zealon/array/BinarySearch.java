@@ -13,7 +13,7 @@ public class BinarySearch {
         for(int i=0;i<array.length;i++){
             //System.out.println(binarySearch(array,array[i]));
         }
-        System.out.println(binarySearch(array,6));
+        System.out.println(binarySearch2(array,6));
 
     }
 
@@ -38,5 +38,38 @@ public class BinarySearch {
         }
         return -1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static int binarySearch2(int[] nums,int target){
+        int min = 0;
+        int max = nums.length-1;
+        while (min <= max){
+            int mid = min+(max-min)/2;
+            if(nums[mid] == target){
+                return mid;
+            }else if(nums[mid] > target){
+                max = mid - 1;
+            }else if(nums[mid] < target){
+                min = mid + 1;
+            }
+        }
+        return -1;
+    }
+
 
 }

@@ -10,7 +10,7 @@ public class BubbleSort {
     public static void main(String[] args){
         int[] nums = {1,2,78,6,48,10,8,66};
         //bubbleSort(nums);
-        sort(nums);
+        sort2(nums);
         // 输出结果
         for(int i=0;i<nums.length;i++){
             System.out.print(nums[i]+"\t");
@@ -65,25 +65,22 @@ public class BubbleSort {
 
 
 
-    public static void sort(int[] nums){
-        for(int i=0;i<nums.length;i++){
+    public static void sort2(int[] nums){
+        for (int i = 0; i < nums.length; i++) {
             boolean flag = false;
-            for(int j=0;j<nums.length-i-1;j++){
+            for (int j = 0; j < nums.length-i-1; j++) {
                 if(nums[j]>nums[j+1]){
-                    int tmp = nums[j];
+                    int temp = nums[j];
                     nums[j] = nums[j+1];
-                    nums[j+1] = tmp;
+                    nums[j+1] = temp;
                     flag = true;
                 }
             }
-            if(!flag){
+            if (!flag){
                 break;
             }
         }
     }
-
-
-
 
 
 

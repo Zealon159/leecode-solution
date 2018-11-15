@@ -17,7 +17,7 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 public class InsertSort {
     public static void main(String[] args){
         int[] nums = {1,21,38,16,20,29};
-        sort(nums);
+        sort2(nums);
 
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
@@ -38,48 +38,65 @@ public class InsertSort {
             }
             nums[preIndex+1] = current;
         }
-
-
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void sort(int[] nums){
+        int current = 0;
         for (int i = 0; i < nums.length-1; i++) {
-            int current = nums[i+1];
+            current = nums[i+1];
             int preIndex = i;
             while (preIndex>=0 && current<nums[preIndex]){
                 nums[preIndex+1] = nums[preIndex];
                 preIndex --;
             }
-            nums[preIndex+1]= current;
+            nums[preIndex+1] = current;
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void sort2(int[] nums){
+
+        int current = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            current = nums[i+1];
+            int preIndex = i;
+            while (preIndex>=0 && current<nums[preIndex]){
+                nums[preIndex+1] = nums[preIndex];
+                preIndex--;
+            }
+            nums[preIndex+1] = current;
+        }
+
+    }
 
 }
