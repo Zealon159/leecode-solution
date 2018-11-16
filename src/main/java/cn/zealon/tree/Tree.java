@@ -62,6 +62,78 @@ public class Tree {
             }
         }
     }
+
+    // 删除
+    public boolean delete(int key){
+        Node current = root; // 要删除的节点
+        Node parent = root;  // 父节点
+        boolean isLeftChild = false;
+
+        // 查找要删除的节点
+        while (current.iData!=key){
+            parent = current;
+            if (key<current.iData){
+                parent = current.leftChild;
+            }else {
+                parent = current.rightChild;
+            }
+
+            // 找不到节点，无法删除
+            if (current != null){
+                return false;
+            }
+        }
+
+        // 1.当前是叶节点的话，直接删除节点
+        if (current.leftChild==null && current.rightChild==null){
+            if (current == root){  // 删除的是父节点，直接赋予空值
+                root = null;
+            }else if (isLeftChild){  // 如果删除的是左子节点，那么父节点的左子节点即为空
+                parent.leftChild = null;
+            }else {
+                parent.rightChild = null;
+            }
+        }
+        // 2.如果没有右节点，只有左节点，直接用左节点代替当前节点
+        else if (current.rightChild == null ){
+            if (current == root){
+                root = current.leftChild;
+            }else if (isLeftChild){
+                // 如果删除了当前节点，需要将当前节点的父节点指向进行一个下移
+                parent.leftChild = current.leftChild;
+            }else {
+                parent.rightChild = current.rightChild;
+            }
+        }
+        // 3.如果没有左节点，只有右节点，直接用右节点代替当前节点
+        else if (current.leftChild == null ){
+            if (current == root){
+                root = current.rightChild;
+            }else if (isLeftChild){
+                parent.leftChild = current.rightChild;
+            }else {
+                parent.rightChild = current.rightChild;
+            }
+        }
+        // 4.左右节点均不为空
+        else {
+            // 定义继承者
+            Node successor = null;
+
+            if (current == root){
+                root = successor;
+            }else if (isLeftChild){
+                // 当前被删除节点的父类的一个赋值操作
+                parent.leftChild = successor;
+            }else{
+                parent.rightChild = successor;
+            }
+
+            successor.leftChild = current.leftChild;
+        }
+
+        return true;
+    }
 }
 
 class Node{
