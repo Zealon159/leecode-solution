@@ -118,21 +118,49 @@ public class Tree {
         // 4.左右节点均不为空
         else {
             // 定义继承者
-            Node successor = null;
+            Node successor = getSuccessor(current);
 
             if (current == root){
                 root = successor;
             }else if (isLeftChild){
-                // 当前被删除节点的父类的一个赋值操作
+                // 是左子节点，当前被删除节点的父类的一个赋值操作
                 parent.leftChild = successor;
             }else{
+                // 右子节点，父类指向赋值
                 parent.rightChild = successor;
             }
 
+            // 给继承者左子节点赋值
             successor.leftChild = current.leftChild;
+
         }
 
         return true;
+    }
+
+    // 寻找继承者 并且 右子节点赋值
+    private Node getSuccessor(Node delNode) {
+        Node successorParent = delNode;
+        Node successor = delNode; // 初始化
+
+        // 先向右节点寻找一位
+        Node current = delNode.rightChild;
+
+        // 向左节点寻找最终的继承者
+        while (current!=null){
+            successorParent = successor;
+            successor = current;
+            current =  current.leftChild;
+        }
+
+        // 如果继承者不是当前被删除节点的右子节点，说明右节点并不是只有一层，是一个右子树
+        if (successor != delNode.rightChild){
+            // 继承者的右子树成为了父类的左子树
+            successorParent.leftChild = successor.rightChild;
+            // 右节点赋值
+            successor.rightChild = delNode.rightChild;
+        }
+        return successor;
     }
 }
 
